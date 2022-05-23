@@ -4,5 +4,6 @@
     padding: 40px;
     background: white;
     border-radius: 20px;
-    box-shadow: 0 0 30px black
+    box-shadow: 0 0 30px black;
+    border: 1px solid #ccc;
 }
