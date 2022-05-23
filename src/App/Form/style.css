@@ -13,13 +13,6 @@
     border-radius: 5px;
 }
 
-.form {
-    border: 1 solid #ccc;
-    padding:20px;
-    border-radius: 5px;
-    margin: 20px 0;
-}
-
 
 .form__legend {
     background-color: teal;
@@ -46,12 +39,12 @@
     background-color: hsl(180, 100%, 35%);
 }
 
-.form__header{
+.form__header {
     color: teal;
     text-align: center;
 }
 
-.from__info {
+.form__info {
     font-size: 14px;
     text-align: center;
     color: #555
