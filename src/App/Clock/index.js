@@ -23,7 +23,7 @@ export const Clock = () => {
                 hour: "numeric",
                 minute: "numeric",
                 second: "numeric",
-                day: "long",
+                day: "numeric",
                 month: "long"
             })}
         </div>
