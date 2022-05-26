@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "./Result";
-import "./style.css";
+import { Header, Label, Input, Select, Button, Paragraph } from "./styled"
 
 export const Form = ({ calculateResult, result }) => {
     const [currency, setCurrency] = useState(currencies[0].short);
@@ -14,20 +14,19 @@ export const Form = ({ calculateResult, result }) => {
 
 
     return (
-        <form className="form" onSubmit={onSubmit}>
-            <h1 className="form__header">
+        <form onSubmit={onSubmit}>
+            <Header>
                 Przelicznik walut
-            </h1>
+            </Header>
             <p>
                 <label>
-                    <span className="form__labelText">
+                    <Label>
                         Kwota w zł*:
-                    </span>
-                    <input
+                    </Label>
+                    <Input
                         value={amount}
                         onChange={({ target }) => setAmount(target.value)}
                         placecholder="wpisz kwotę w zł"
-                        className="form__field"
                         type="number"
                         required
                         step="0.01"
@@ -36,11 +35,10 @@ export const Form = ({ calculateResult, result }) => {
             </p>
             <p>
                 <label>
-                    <span className="form__labelText">
+                    <Label>
                         Waluta:
-                    </span>
-                    <select
-                        className="form__field"
+                    </Label>
+                    <Select
                         value={currency}
                         onChange={({ target }) => setCurrency(target.value)}
                     >
@@ -52,16 +50,16 @@ export const Form = ({ calculateResult, result }) => {
                                 {currency.name}
                             </option>
                         )))}
-                    </select>
+                    </Select>
                 </label>
             </p>
             <p>
-                <button className="form__button">Przelicz!</button>
+                <Button>Przelicz!</Button>
             </p>
 
-            <p className="form__info">
+            <Paragraph>
                 Kursy pochodzą ze strony internetowyKantor.pl z dnia 23.05.2022
-            </p>
+            </Paragraph>
 
             <Result result={result} />
         </form>
