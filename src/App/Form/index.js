@@ -1,15 +1,29 @@
 import React, { useState } from "react";
 import { currencies } from "../currencies";
 import { Result } from "./Result";
-import { Header, Label, Input, Select, Button, Paragraph } from "./styled"
+import { Header, Span, Input, Select, Button, Paragraph } from "./styled";
 
-export const Form = ({ calculateResult, result }) => {
+export const Form = () => {
     const [currency, setCurrency] = useState(currencies[0].short);
     const [amount, setAmount] = useState("");
 
+    const [result, setResult] = useState();
+
+    const calculateResult = (currency, amount) => {
+        const rate = currencies
+            .find(({ short }) => short === currency)
+            .rate;
+
+        setResult({
+            sourceAmount: +amount,
+            targetAmount: amount / rate,
+            currency,
+        });
+    }
+
     const onSubmit = (event) => {
         event.preventDefault();
-        calculateResult(currency, amount); 
+        calculateResult(currency, amount);
     }
 
 
@@ -20,13 +34,13 @@ export const Form = ({ calculateResult, result }) => {
             </Header>
             <p>
                 <label>
-                    <Label>
+                    <Span>
                         Kwota w zł*:
-                    </Label>
+                    </Span>
                     <Input
                         value={amount}
                         onChange={({ target }) => setAmount(target.value)}
-                        placecholder="wpisz kwotę w zł"
+                        placeholder="wpisz kwotę w zł"
                         type="number"
                         required
                         step="0.01"
@@ -35,9 +49,9 @@ export const Form = ({ calculateResult, result }) => {
             </p>
             <p>
                 <label>
-                    <Label>
+                    <Span>
                         Waluta:
-                    </Label>
+                    </Span>
                     <Select
                         value={currency}
                         onChange={({ target }) => setCurrency(target.value)}
