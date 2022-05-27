@@ -5,7 +5,7 @@ export const Header = styled.header`
     text-align: center;
 `;
 
-export const Label = styled.span`
+export const Span = styled.span`
     width: 100%;
     max-width: 200px;
     display: inline-block;
