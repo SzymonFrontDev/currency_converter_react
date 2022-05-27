@@ -1,24 +1,16 @@
-import React , { useState, useEffect } from 'react';
+import React from 'react';
 import { Time } from './styled';
+import { useCurrentDate } from './useCurrentDate.js'
 
 export const Clock = () => {
-    const [date, setDate] = useState(new Date());
 
-    useEffect (() => {
-        const intervalId = setInterval(() => {
-            setDate(new Date());
-        }, 1000);
-
-        return () => {
-            clearInterval(intervalId);
-        };
-    }, []); 
+    const date = useCurrentDate();
 
     return (
         <Time>
             Dzisiaj jest
             {" "}
-            {date.toLocaleString(undefined, {
+            {date.toLocaleString(date, {
                 weekday: "long",
                 hour: "numeric",
                 minute: "numeric",
