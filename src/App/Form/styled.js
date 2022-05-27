@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Header = styled.header`
     color: teal;
     text-align: center;
+    font-size: 35px;
 `;
 
 export const Span = styled.span`
