@@ -56,6 +56,8 @@ export const Form = () => {
                                         placeholder="wpisz kwotę w zł"
                                         type="number"
                                         required
+                                        autoFocus
+                                        min="0.01"
                                         step="0.01"
                                     />
                                 </label>
