@@ -8,10 +8,7 @@ function App({ calculateResult, result }) {
     return (
         <div className="app">
             <Clock />
-            <Form
-                result={result}
-                calculateResult={calculateResult}
-            />
+            <Form/>
         </div>
     );
 }
