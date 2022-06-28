@@ -52,3 +52,11 @@ export const Paragraph = styled.p`
     text-align: center;
     color: #555;
 `;
+
+export const Loading = styled.p`
+    color: #008080;
+`;
+
+export const Failure = styled.p`
+    color: #db143c;
+`;
