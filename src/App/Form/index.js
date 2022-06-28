@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { currencies } from "../currencies";
 import { Result } from "./Result";
 import { Header, Span, Input, Select, Button, Paragraph, Loading, Failure, } from "./styled";
 
 import { UseRatesData } from "./UseRatesData";
 
 export const Form = () => {
-    const [currency, setCurrency] = useState(currencies[0].short);
+    const [currency, setCurrency] = useState();
     const [amount, setAmount] = useState("");
     const ratesData = UseRatesData();
 
@@ -69,12 +68,11 @@ export const Form = () => {
                                         Waluta:
                                     </Span>
                                     <Select
-                                        as="select"
+                                        
                                         value={currency}
                                         onChange={({ target }) => setCurrency(target.value)}
                                     >
                                         {!!ratesData.rates && Object.key(ratesData.rates).map(((currency) => (
-
                                             <option
                                                 key={currency}
                                                 value={currency}
