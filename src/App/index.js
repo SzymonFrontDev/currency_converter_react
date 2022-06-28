@@ -3,7 +3,7 @@ import './App.css';
 import { Form } from './Form';
 import { Clock } from "./Clock";
 
-function App({ calculateResult, result }) {
+function App() {
 
     return (
         <div className="app">
