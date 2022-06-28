@@ -7,18 +7,16 @@ import { UseRatesData } from "./UseRatesData";
 export const Form = () => {
     const [currency, setCurrency] = useState();
     const [amount, setAmount] = useState("");
-    const ratesData = UseRatesData();
 
     const [result, setResult] = useState();
+    const ratesData = UseRatesData();
 
     const calculateResult = (currency, amount) => {
         const rate = ratesData.rates[currency]
-            .find(({ short }) => short === currency)
-            .rate;
 
         setResult({
             sourceAmount: +amount,
-            targetAmount: amount / rate,
+            targetAmount: amount * rate,
             currency,
         });
     }
@@ -37,7 +35,7 @@ export const Form = () => {
             {ratesData.state === "loading"
                 ? (
                     <Loading>
-                        Sekunda...<br />Ładuję kursy walut z Europejskiego Bnku Centralnego
+                        Sekunda...🕑<br />Ładuję kursy walut z Europejskiego Bnku Centralnego
                     </Loading>
                 )
                 : (
@@ -72,7 +70,7 @@ export const Form = () => {
                                         value={currency}
                                         onChange={({ target }) => setCurrency(target.value)}
                                     >
-                                        {!!ratesData.rates && Object.key(ratesData.rates).map(((currency) => (
+                                        {Object.keys(ratesData.rates).map(((currency) => (
                                             <option
                                                 key={currency}
                                                 value={currency}
@@ -88,13 +86,13 @@ export const Form = () => {
                             </p>
 
                             <Paragraph>
-                                Kursy pochodzą ze strony internetowyKantor.pl z dnia 23.05.2022
+                             Kursy walut pobierane są z Europejskiego Banku Centralnego.
                             </Paragraph>
 
                             <Result result={result} />
                         </>
                     )
-                )};
+                )}
         </form>
     );
 };
